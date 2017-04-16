@@ -1,6 +1,6 @@
 #!/bin/bash
 #20170416
-#By Li-Wei Chen
+#By Li-Wei Chen from Taiwan 
 declare -a stName
 declare -i i
 stName[1]="WBEZ Chicago Public Radio 91.5"
