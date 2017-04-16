@@ -1,5 +1,5 @@
 #!/bin/bash
-#20170411
+#20170416
 #By Li-Wei Chen
 declare -a stName
 declare -i i
