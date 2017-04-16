@@ -1,0 +1,68 @@
+#!/bin/bash
+#20170411
+#By Li-Wei Chen
+declare -a stName
+declare -i i
+stName[1]="WBEZ Chicago Public Radio 91.5"
+stName[2]="KCFR Colorado Public Radio"
+stName[3]="Talk Back Radio 1080 in Santa Cruz"
+stName[4]="KMTS-Glenwood Springs The Best Country 99.1"
+stName[5]="KOTA-Rapid City Information Super Station  AM 1380 kHz"
+stName[6]="BBC World Service"
+stName[7]="BBC Radio 4"
+stName[8]=" KEZW AM 1430 Aurora, Colorado"
+for((i=1;i<=8;i=i+1))
+do
+  echo -----------------------------------------
+  echo Station $i ${stName[i]/n} 
+done
+
+
+echo -e "Please input station numbers \n"
+read -p "Station number:  " num
+echo -e $num
+
+
+
+
+echo ${stName[num]}
+
+
+bbc[0]=""
+#bbc[1]="http://www.listenlive.eu/bbcradio1.m3u"
+bbc[1]="http://stream.wbez.org/wbez128.mp3" #WBEZ
+bbc[2]="http://livestream.cprnetwork.org/pls/live_newsinfo_mp3.pls"
+bbc[3]="http://184.105.148.154:8000/live.m3u" #KSCO
+bbc[4]="http://ice7.securenetsystems.net/KMTSFM.m3u" #KMTS
+bbc[5]="http://crystalout.surfernetwork.com:8001/KOTA-AM_MP3.m3u" #KOTA
+bbc[6]="http://bbcwssc.ic.llnwd.net/stream/bbcwssc_mp1_ws-eieuk" #BBC World Service
+bbc[7]="http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio4fm_mf_p" #BBC Radio 4
+bbc[8]="http://stream.abacast.net/playlist/entercom-kezwamaac-64.m3u" #KEZW AM 1430 Aurora, Colorado
+
+
+
+__='
+if [ $# -eq 0 ]
+then
+echo "usage bbc 1"
+for ((i=0; i<${#bbc[@]}; i++))
+do
+echo $i . ${bbcl[$i]} 
+done
+exit 1
+fi 
+'
+
+case $num in
+ "1"|"6"|"7")
+    mplayer -quiet ${bbc[num]}
+    ;;
+ "2"|"3"|"4"|"5"|"8")
+    mplayer -quiet -playlist ${bbc[num]}
+    ;;
+esac
+
+
+
+
+
